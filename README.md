@@ -72,8 +72,9 @@ place (usually, security/users account) and use AssumeRole to works with org acc
  CloudTrail, etc.) you're ready to start progressively orchestrating new resources in order to segregate different Environment and Services per account.
  This approach will allow you to start a **1 by 1 Blue/Green (Red/Black) migration without affecting any of your services at all**. You would like to take
  advantage of an Active-Active DNS switchover approach (nice as DR exercise too). 
-    - Eg: Jenkins CI Server Migration steps:
-      1. Let's say you have your EC2_A (`jenkins.aws.domain.com`), so you could deploy a brand new EC2_B Jenkins Instance.
+    - **EXAMPLE:** Jenkins CI Server Migration steps:
+      1. Let's say you have your EC2_A (`jenkins.aws.domain.com`) in Account_A (Legacy), so you could deploy a brand new EC2_B Jenkins Instance.
+      in Account_B (Shared Resources).
       2. Temporally associated with `jenkins2.aws.domain.com`
       3. Sync it's current data (`/var/lib/jenkins`)
       4. Test and fully validate every job and pipeline works as expected.
@@ -87,10 +88,12 @@ place (usually, security/users account) and use AssumeRole to works with org acc
 ### AWS reference links
 Consider the following AWS official links as reference:
 
-- **AWS Multiple Account Security Strategy:** https://aws.amazon.com/answers/account-management/aws-multi-account-security-strategy/
+- **AWS Multiple Account User Management Strategy:** https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html
+- **AWS Muttiple Account Security Strategy** https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-sharing-logs.html
 - **AWS Multiple Account Billing Strategy:** https://aws.amazon.com/answers/account-management/aws-multi-account-billing-strategy/
+- **AWS Secure Account Setup:** https://aws.amazon.com/answers/security/aws-secure-account-setup/
 - **Authentication and Access Control for AWS Organizations:** 
-https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html (keep in mind EC2 and other services can also use AWS IAM Roles to get secure cross-account access - https://security.stackexchange.com/questions/205698/security-audit-on-aws-question-on-findings/206576#206576)
+https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html (keep in mind EC2 and other services can also use AWS IAM Roles to get secure cross-account access)
 
 
 ## TODO
