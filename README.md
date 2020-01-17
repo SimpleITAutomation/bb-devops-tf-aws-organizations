@@ -33,10 +33,11 @@ The following block provides a brief explanation of the chosen AWS Organization 
   <img src="https://raw.githubusercontent.com/binbashar/bb-devops-tf-aws-organizations/master/figures/binbash-aws-organizations.png"
 alt="leverage" width="1000"/>
 </div>
+
 **NOTE:** *Image just as reference*
 
 
-Our default AWS Organizations terraform layout solution includes 5 accounts (6 or N if you invite a pre-existing AWS Account), 
+### Our default AWS Organizations terraform layout solution includes 5 accounts (6 or N if you invite a pre-existing AWS Account), 
 
 
 | Account                     | Description                                                                                                                                                                                                                                                                                |
