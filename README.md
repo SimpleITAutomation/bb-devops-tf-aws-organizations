@@ -1,8 +1,8 @@
 <div align="center">
-    <img src="https://raw.githubusercontent.com/binbashar/bb-devops-tf-aws-organizations/figures/binbash.png" alt="drawing" width="350"/>
+    <img src="https://raw.githubusercontent.com/binbashar/bb-devops-tf-aws-organizations/master/figures/binbash.png" alt="drawing" width="350"/>
 </div>
 <div align="right">
-  <img src="https://raw.githubusercontent.com/binbashar/bb-devops-tf-aws-organizations/figures/binbash-leverage-terraform.png"
+  <img src="https://raw.githubusercontent.com/binbashar/bb-devops-tf-aws-organizations/master/figures/binbash-leverage-terraform.png"
   alt="leverage" width="230"/>
 </div>
 
@@ -65,12 +65,15 @@ place (usually, security/users account) and use AssumeRole to works with org acc
 - **Compatibility:** Legacy accounts can be invited as a member of the new Organization.
 
 
+
 Consider the following AWS official links as reference since the AWS Organization structure:
 
 - **AWS Multiple Account Security Strategy:** https://aws.amazon.com/answers/account-management/aws-multi-account-security-strategy/
 - **AWS Multiple Account Billing Strategy:** https://aws.amazon.com/answers/account-management/aws-multi-account-billing-strategy/
 - **Authentication and Access Control for AWS Organizations:** 
 https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html (keep in mind EC2 and other services can also use AWS IAM Roles to get secure cross-account access - https://security.stackexchange.com/questions/205698/security-audit-on-aws-question-on-findings/206576#206576)
+
+
 
 ## TODO
 
@@ -90,7 +93,7 @@ Root directory `Makefile` has the automated steps (to be integrated with **Circl
 ### CircleCi PR auto-release job
 
 <div align="left">
-  <img src="https://raw.githubusercontent.com/binbashar/bb-devops-tf-aws-organizations/figures/circleci.png" alt="leverage-circleci" width="230"/>
+  <img src="https://raw.githubusercontent.com/binbashar/bb-devops-tf-aws-organizations/master/figures/circleci.png" alt="leverage-circleci" width="230"/>
 </div>
 
 - <https://circleci.com/gh/binbashar/bb-devops-tf-aws-organizations>
