@@ -47,7 +47,7 @@ Our default AWS Organizations terraform layout solution includes 5 accounts + 1 
 | Root Organizations          | Used to manage configuration and access to AWS Org managed accounts. The AWS Organizations account provides the ability to create and financially manage member accounts, it contains AWS Organizations Service Control Policies(SCPs).                                                    |
 | Shared Services / Resources | Reference for creating infrastructure shared services such as directory services, DNS, VPN Solution, Monitoring tools like Prometheus and Graphana, CI/CD server (Jenkins, Drone, Spinnaker, etc), centralized logging solution like ELK  and Vault Server (Hashicorp Vault)               |
 | Security                    | Intended for centralized user mamangement via IAM roles based cross-org auth approach (IAM roles per account to be assumed still needed. Also to centralize AWS CloudTrail and AWS Config logs, and used as the master AWS GuardDuty Account                                               |
-| Legacy                      | Your pre existing AWS Accounts to be invited as memebers of the new AWS Organization, probably several services and workloads are going to be progressively migrated to your new Accounts.                                                                                                 |
+| Legacy                      | Your pre existing AWS Accounts to be invited as members of the new AWS Organization, probably several services and workloads are going to be progressively migrated to your new Accounts.                                                                                                  |
 | Apps DevStg                 | Host your DEV, QA and STG environment workloads Compute / Web App Servers (K8s Clusters and Lambda Functions), Load Balancers, DB Servers, Caching Services, Job queues & Servers, Data, Storage, CDN                                                                                      |
 | Apps Prod                   | Host your PROD environment workloads Compute / Web App Servers (K8s Clusters and Lambda Functions), Load Balancers, DB Servers, Caching Services, Job queues & Servers, Data, Storage, CDN                                                                                                 |
 
@@ -65,12 +65,27 @@ AWS services are available within different accounts.
  everything with private endpoints only accessible vía Pritunl VPN significantly reducing the surface of attack.
 - **User Mgmt:** You can manage all your IAM resources (users/groups/roles) and policies in one 
 place (usually, security/users account) and use AssumeRole to works with org accounts.
-- **Operation:** Will reduce the **blast radius** to the maximum possible.   
-- **Compatibility:** Legacy accounts can be invited as a member of the new Organization.
-
+- **Operations:** Will reduce the **blast radius** to the maximum possible.   
+- **Compatibility:** Legacy accounts can be invited (https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html) as a
+ member of the new Organization and afterwards even imported into your terraform code (https://www.terraform.io/docs/providers/aws/r/organizations_account.html#import).
+- **Migration:** After having your baseline AWS Org reference cloud solutions architecture deployed (IAM, VPC, NACLS, VPC-Peering, DNS Cross-Org,
+ CloudTrail, etc.) you're ready to start progressively orchestrating new resources in order to segregate different Environment and Services per account.
+ This approach will allow you to start a **1 by 1 Blue/Green (Red/Black) migration without affecting any of your services at all**. You would like to take
+ advantage of an Active-Active DNS switchover approach (nice as DR exercise too). 
+    - Eg: Jenkins CI Server Migration steps:
+      1. Let's say you have your EC2_A (`jenkins.aws.domain.com`), so you could deploy a brand new EC2_B Jenkins Instance.
+      2. Temporally associated with `jenkins2.aws.domain.com`
+      3. Sync it's current data (`/var/lib/jenkins`)
+      4. Test and fully validate every job and pipeline works as expected.
+      5. In case you haven't finished your validations we highly recommend to declare everything as code and fully automated 
+      so as to destroy and re-create your under development env on demand to save costs.
+      6. Finally switch `jenkins2.aws.domain.com` -> to -> `jenkins.aws.domain.com`
+      7. Stop your old EC2_A.
+      8. If everything looks fine after after 2/4 weeks you could terminate your EC2_A (hope everything is as code and just `terraform destroy`)
+      9. Considering the previously detailed steps plan your roadmap to move forward with every other component to be migrated.
 
 ### AWS reference links
-Consider the following AWS official links as reference since the AWS Organization structure:
+Consider the following AWS official links as reference:
 
 - **AWS Multiple Account Security Strategy:** https://aws.amazon.com/answers/account-management/aws-multi-account-security-strategy/
 - **AWS Multiple Account Billing Strategy:** https://aws.amazon.com/answers/account-management/aws-multi-account-billing-strategy/
@@ -80,7 +95,7 @@ https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html
 
 ## TODO
 
-Develop a Terraform 0.12 compatible module: `terraform-aws-organizations` https://registry.terraform.io/modules/binbashar
+Develop a Terraform 0.12 compatible module: `terraform-aws-organizations` -> https://registry.terraform.io/modules/binbashar
 
 ---
 
