@@ -9,15 +9,16 @@
 # Reference Architecture: Terraform AWS Organizations Account Baseline
 
 ## Overview
-This repository contains all Terraform configuration files used to create Binbash Leverage Reference AWS Cloud 
-Solutions Architecture.
+This repository contains all Terraform configuration files used to create Binbash Leverage Reference 
+AWS Organizations Multi-Account baseline layout.
 
-## Files/Folders Organization
+
+## AWS Organization Accounts Layout
 The following block provides a brief explanation of the chosen AWS Organization Accounts layout:
 ```
-+ devstg/             (resources for dev apps/services account)
++ devstg/          (resources for dev apps/services account)
     ...
-+ prod/             (resources for prod apps/services account)
++ prod/            (resources for prod apps/services account)
     ...
 + root-org/        (resources for the root-org account)
     ...
@@ -37,7 +38,8 @@ alt="leverage" width="1000"/>
 **NOTE:** *Image just as reference*
 
 
-### Our default AWS Organizations terraform layout solution includes 5 accounts (6 or N if you invite a pre-existing AWS Account), 
+### AWS Organization Accounts description
+Our default AWS Organizations terraform layout solution includes 5 accounts + 1 to N (if you invite pre-existing AWS Account/s).
 
 
 | Account                     | Description                                                                                                                                                                                                                                                                                |
@@ -67,14 +69,13 @@ place (usually, security/users account) and use AssumeRole to works with org acc
 - **Compatibility:** Legacy accounts can be invited as a member of the new Organization.
 
 
-
+### AWS reference links
 Consider the following AWS official links as reference since the AWS Organization structure:
 
 - **AWS Multiple Account Security Strategy:** https://aws.amazon.com/answers/account-management/aws-multi-account-security-strategy/
 - **AWS Multiple Account Billing Strategy:** https://aws.amazon.com/answers/account-management/aws-multi-account-billing-strategy/
 - **Authentication and Access Control for AWS Organizations:** 
 https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html (keep in mind EC2 and other services can also use AWS IAM Roles to get secure cross-account access - https://security.stackexchange.com/questions/205698/security-audit-on-aws-question-on-findings/206576#206576)
-
 
 
 ## TODO
