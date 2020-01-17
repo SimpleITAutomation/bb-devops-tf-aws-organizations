@@ -30,9 +30,10 @@ The following block provides a brief explanation of the chosen AWS Organization 
 ```
 
 <div align="center">
-  <img src="./%40figures/binbash-aws-organizations.png"
+  <img src="https://raw.githubusercontent.com/binbashar/bb-devops-tf-aws-organizations/master/figures"
   alt="leverage" width="1000"/>
 </div>
+**NOTE:** *Image just as reference*
 
 
 Our default AWS Organizations terraform layout solution includes 5 accounts (6 or N if you invite a pre-existing AWS Account), 
