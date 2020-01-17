@@ -6,9 +6,9 @@
 # Default Policy: this is a minimal policy.
 #
 resource "aws_organizations_policy" "default" {
-    name = "default"
+  name = "default"
 
-    content = <<JSON
+  content = <<JSON
 {
   "Version": "2012-10-17",
   "Statement": {
@@ -29,9 +29,9 @@ JSON
 # Standard Policy: this policy is the one that is typically used by most accounts.
 #
 resource "aws_organizations_policy" "standard" {
-    name = "standard"
+  name = "standard"
 
-    content = <<JSON
+  content = <<JSON
 {
   "Version": "2012-10-17",
   "Statement": {

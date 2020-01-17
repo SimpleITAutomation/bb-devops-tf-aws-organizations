@@ -2,10 +2,10 @@
 # AWS Provider Settings
 #
 variable "region" {
-    description = "AWS Region"
+  description = "AWS Region"
 }
 variable "profile" {
-    description = "AWS Profile"
+  description = "AWS Profile"
 }
 
 #

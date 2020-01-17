@@ -3,8 +3,8 @@
 #  but it could also be used to manage the SCPs of the OUs and accounts.
 #
 resource "aws_organizations_account" "root" {
-    name  = "project root"
-    email = "aws.project+root@project.com"
+  name  = "project root"
+  email = "aws.project+root@project.com"
 }
 
 #
@@ -12,9 +12,9 @@ resource "aws_organizations_account" "root" {
 #  permissions over the other accounts.
 #
 resource "aws_organizations_account" "security" {
-    name  = "security"
-    email = "aws.project+security@project.com"
-    parent_id = aws_organizations_organizational_unit.security.id
+  name      = "security"
+  email     = "aws.project+security@project.com"
+  parent_id = aws_organizations_organizational_unit.security.id
 }
 
 #
@@ -22,9 +22,9 @@ resource "aws_organizations_account" "security" {
 #  or provide services to the other accounts.
 #
 resource "aws_organizations_account" "shared" {
-    name  = "shared"
-    email = "aws.project+shared@project.com"
-    parent_id = aws_organizations_organizational_unit.shared.id
+  name      = "shared"
+  email     = "aws.project+shared@project.com"
+  parent_id = aws_organizations_organizational_unit.shared.id
 }
 
 #
@@ -32,9 +32,9 @@ resource "aws_organizations_account" "shared" {
 #  placed and maintained here.
 #
 resource "aws_organizations_account" "project_devstg" {
-    name  = "project_devstg"
-    email = "aws.project+project_devstg@project.com"
-    parent_id = aws_organizations_organizational_unit.project_apps.id
+  name      = "project_devstg"
+  email     = "aws.project+project_devstg@project.com"
+  parent_id = aws_organizations_organizational_unit.project_apps.id
 }
 
 #
@@ -42,7 +42,7 @@ resource "aws_organizations_account" "project_devstg" {
 #  maintained here.
 #
 resource "aws_organizations_account" "project_prd" {
-    name  = "project_prd"
-    email = "aws.project+project_prd@project.com"
-    parent_id = aws_organizations_organizational_unit.project_apps.id
+  name      = "project_prd"
+  email     = "aws.project+project_prd@project.com"
+  parent_id = aws_organizations_organizational_unit.project_apps.id
 }
