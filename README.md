@@ -30,8 +30,8 @@ The following block provides a brief explanation of the chosen AWS Organization 
 ```
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/binbashar/bb-devops-tf-aws-organizations/master/figures"
-  alt="leverage" width="1000"/>
+  <img src="https://raw.githubusercontent.com/binbashar/bb-devops-tf-aws-organizations/master/figures/binbash-aws-organizations.png"
+alt="leverage" width="1000"/>
 </div>
 **NOTE:** *Image just as reference*
 
