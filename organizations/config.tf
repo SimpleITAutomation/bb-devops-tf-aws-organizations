@@ -11,7 +11,7 @@ provider "aws" {
 # Backend Config (partial)
 #
 terraform {
-  required_version = ">= 0.12.6"
+  required_version = ">= 0.12.19"
 
   backend "s3" {
     key = "root/organization/terraform.tfstate"
