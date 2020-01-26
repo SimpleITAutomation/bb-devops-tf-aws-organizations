@@ -25,16 +25,16 @@ help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf " - \033[36m%-18s\033[0m %s\n", $$1, $$2}'
 
 #==============================================================#
-# TERRAFORM 												   #
+# TERRAFORM 												                           #
 #==============================================================#
 version: ## Show terraform version
 	${TF_CMD_PREFIX} version
 
 format: ## The terraform fmt is used to rewrite tf conf files to a canonical format and style.
-	${TF_CMD_PREFIX} fmt ${TF_PWD_CONT_DIR}
+	${TF_CMD_PREFIX} fmt -recursive ${TF_PWD_CONT_DIR}
 
 format-check: ## The terraform fmt is used to rewrite tf conf files to a canonical format and style.
-	${TF_CMD_PREFIX} fmt -check ${TF_PWD_CONT_DIR}
+	${TF_CMD_PREFIX} fmt -recursive -check ${TF_PWD_CONT_DIR}
 
 tflint: ## TFLint is a Terraform linter for detecting errors that can not be detected by terraform plan (tf0.12 > 0.10.x).
 	docker run --rm \
@@ -52,7 +52,7 @@ tflint-deep: ## TFLint is a Terraform linter for detecting errors that can not b
 	--aws-region=${LOCAL_OS_AWS_REGION}
 
 #==============================================================#
-# CIRCLECI 													   #
+# CIRCLECI 													                           #
 #==============================================================#
 circleci-validate-config: ## Validate A CircleCI Config (https://circleci.com/docs/2.0/local-cli/)
 	circleci config validate .circleci/config.yml
