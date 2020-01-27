@@ -22,7 +22,7 @@ variable "project_long" {
 
 variable "environment" {
   description = "Environment Name"
-  default = "dev"
+  default     = "dev"
 }
 
 #
